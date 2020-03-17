@@ -1,0 +1,86 @@
+
+//顺序表
+//  main.c
+//  pta
+//
+//  Created by Aron on 2020/3/15.
+//  Copyright © 2020 Aron. All rights reserved.
+//
+
+#include <stdio.h>
+
+
+
+int main()
+{
+    int a[1000005];
+    int n=0;
+    int k;
+    int num;
+    scanf("%d",&k);
+    while(scanf("%d",&num)&&num>=0){
+        a[n++]=num;
+    }
+    if(k<=0||k>n) printf("NULL");
+    else printf("%d",a[n-k]);
+   return 0;
+}
+
+
+//
+//  main.c
+//  pta
+//
+//  Created by Aron on 2020/3/15.
+//  Copyright © 2020 Aron. All rights reserved.
+//
+
+#include <stdio.h>
+
+typedef struct node
+{
+    int data;
+    struct node *next;
+}snode,*ptr;
+
+int main()
+{
+
+    
+    int k;
+    int num,first,n=1;
+    ptr head,p;
+    scanf("%d",&k);
+    head = NULL;
+    scanf("%d",&num);
+    first=num;
+    while(num>=0){
+        p=(ptr)malloc(sizeof(snode));
+        p->data=num;
+        p->next=head;
+        head=p;
+        n++;
+        scanf("%d",&num);
+    }
+    
+    //printf("%d %d",n-1,first);
+    
+    if(k<=0 || k>n-1) printf("NULL");
+    else if (k==1){
+       printf("%d",head->data);
+    }
+    else if (k==n-1){
+       printf("%d",first);
+    }
+    else {
+        k--;
+        while(k--){
+            head=head->next;
+        }
+        printf("%d",head->data);
+    }
+   return 0;
+}
+
+
+
